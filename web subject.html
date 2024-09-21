@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logoo.png" type="image/png" sizes="24 x24">
+
+    <title>Data Science Course Subjects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .navbar {
+            background-color: #1e90ff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none; /* Ensure no underline */
+            color: white; /* Logo color */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .nav-links li a:hover {
+            color: #ffd700;
+        }
+
+        header, footer {
+            background-color: #1e90ff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1, footer p {
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .subject-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #333;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .subject-box p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .cta-btn {
+            padding: 8px 15px;
+            background-color: #1e90ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .cta-btn:hover {
+            background-color: #104e8b;
+        }
+
+        .footer {
+            background-color: #1e90ff;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            border-bottom: 1px solid #ffffff33;
+            padding-bottom: 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p,
+        .footer-column a,
+        .footer-column ul {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .footer-column a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .quick-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .quick-links li {
+            margin-bottom: 10px;
+        }
+
+        .quick-links li a {
+            color: white;
+            font-size: 16px;
+        }
+
+        .quick-links li a:hover {
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            color: #ffffffcc;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #0080ff;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-mode header,
+        .dark-mode footer {
+            background-color: #007acc;
+        }
+
+        .dark-mode .subject-box {
+            background-color: #444;
+            border-color: #666;
+        }
+
+        .dark-mode .cta-btn {
+            background-color: #007acc;
+        }
+
+        .dark-mode .cta-btn:hover {
+            background-color: #005f8b;
+        }
+
+        .dark-mode .nav-links li a {
+            color: white;
+        }
+
+        .dark-mode .nav-links li a:hover {
+            color: #ffd700;
+        }
+
+        .dark-mode .footer-column a {
+            color: white;
+        }
+
+        .dark-mode .footer-column a:hover {
+            color: #ffd700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">SmartEdu</a> <!-- Linked logo to index.html -->
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Web Development Subjects</h1>
+    </header>
+
+    <!-- Subjects -->
+    <div class="container">
+        <div class="subject-box">
+            <p>HTML Basics</p>
+            <a href="html.html" class="cta-btn">Go to Course</a>
+        </div>
+
+        <div class="subject-box">
+            <p>CSS Styling</p>
+            <a href="css.html" class="cta-btn">Go to Course</a>
+        </div>
+
+        <div class="subject-box">
+            <p>JavaScript Programming</p>
+            <a href="js.html" class="cta-btn">Go to Course</a>
+        </div>
+        <div class="subject-box">
+            <p>Python</p>
+            <a href="python.html" class="cta-btn">Go to Course</a>
+        </div>
+        <div class="subject-box">
+            <p>Php</p>
+            <a href="php.html" class="cta-btn">Go to Course</a>
+        </div>
+        <div class="subject-box">
+            <p>Sql</p>
+            <a href="sql.html" class="cta-btn">Go to Course</a>
+        </div>
+        <div class="subject-box">
+            <p>Node js</p>
+            <a href="node js.html" class="cta-btn">Go to Course</a>
+        </div>
+        <div class="subject-box">
+            <p>Type Script</p>
+            <a href="type script.html" class="cta-btn">Go to Course</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>Email: <a href="mailto:info@smartedu.com">info@smartedu.com</a></p>
+                    <p>Phone: <a href="tel:+91-1234567890">+91-1234567890</a></p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Education. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+
+</body>
+
+</html>

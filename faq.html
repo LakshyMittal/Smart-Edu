@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logoo.png" type="image/png" sizes="24 x24">
+
+    <title>FAQ - SmartEdu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #1e90ff;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #007acc;
+        }
+
+    
+        .navbar {
+            background-color: #1e90ff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white; 
+            text-decoration: none; 
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a { 
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .nav-links li a:hover {
+            color: #ffd700;
+        }
+
+        
+        .faq-container {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq-container h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #1e90ff;
+        }
+
+        .faq {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq:hover {
+            background-color: #f5f5f5;
+        }
+
+        .faq h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #1e90ff;
+        }
+
+        .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faq.active .faq-content {
+    max-height: 200px; 
+}
+
+
+        
+        .dark-mode .navbar {
+            background-color: #007acc;
+        }
+
+        .dark-mode .faq {
+            background-color: #444;
+            color: white;
+        }
+
+        .dark-mode .faq h3 {
+            color: #e4e1d3;
+        }
+
+        .dark-mode .faq-content {
+            color: #ccc;
+        }
+
+        
+        .footer {
+            background-color: #1e90ff;
+            color: white;
+            padding: 40px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            border-bottom: 1px solid #ffffff33;
+            padding-bottom: 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p,
+        .footer-column a,
+        .footer-column ul {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .footer-column a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .quick-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .quick-links li {
+            margin-bottom: 10px;
+        }
+
+        .quick-links li a {
+            color: white;
+            font-size: 16px;
+        }
+
+        .quick-links li a:hover {
+            color: #ffd700;
+        }
+
+        
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            color: #ffffffcc;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-top {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
+
+    
+    <nav class="navbar">
+        <a href="index.html" class="logo">SmartEdu</a> 
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    
+    <div class="faq-container">
+        <h1>Frequently Asked Questions (FAQ)</h1>
+
+        <div class="faq">
+            <h3>What is SmartEdu?</h3>
+            <div class="faq-content">
+                <p>SmartEdu is an educational platform offering a wide range of courses to help individuals learn and grow in various fields, including web development, data science, and more.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <h3>How do I enroll in a course?</h3>
+            <div class="faq-content">
+                <p>To enroll in a course, simply browse our catalog, select the course you're interested in, and follow the enrollment process outlined on the course page.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <h3>Are the courses self-paced?</h3>
+            <div class="faq-content">
+                <p>Yes, most of our courses are self-paced, allowing you to learn at your own convenience and complete the course at your own speed.</p>
+            </div>
+        </div>
+
+        
+
+        
+
+        
+        
+
+        <div class="faq">
+            <h3>How can I contact support?</h3>
+            <div class="faq-content">
+                <p>If you have any questions or need assistance, you can contact our support team via email at support@smartedu.com or through our contact page.</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>Email: <a href="mailto:info@smartedu.com">info@smartedu.com</a></p>
+                    <p>Phone: <a href="tel:+91-1234567890">+91-1234567890</a></p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Education. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+   
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        
+        const faqs = document.querySelectorAll('.faq');
+
+       
+        faqs.forEach(faq => {
+            faq.addEventListener('click', () => {
+                
+                faq.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

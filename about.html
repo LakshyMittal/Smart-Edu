@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logoo.png" type="image/png" sizes="24 x24">
+
+
+    <title>About Us - Smart Education</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f0f8ff;
+            transition: background-color 0.5s ease, color 0.5s ease; 
+        }
+        
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-mode .navbar,
+        .dark-mode header,
+        .dark-mode .footer {
+            background-color: #007acc;
+        }
+
+        .dark-mode a {
+            color: #1e90ff;
+        }
+
+        .dark-mode a:hover {
+            color: #ffd700;
+        }
+
+        .navbar {
+            background-color: #1e90ff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px; /* Logo font size */
+            font-weight: bold; /* Logo font weight */
+            color: white; /* Logo color */
+            text-decoration: none; /* No underline */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .nav-links li a:hover {
+            color: #ffd700;
+        }
+
+        header {
+            background-color: #1e90ff;
+            color: rgb(238, 238, 238);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero-section {
+            height: 80vh;
+            background: url("Leonardo_Phoenix_Create_a_highresolution_image_featuring_a_mod_3.jpg") no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: rgb(241, 217, 217);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+        .about-section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1e90ff;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #1e90ff;
+            color: white;
+            padding: 40px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            border-bottom: 1px solid #ffffff33;
+            padding-bottom: 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p,
+        .footer-column a,
+        .footer-column ul {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .footer-column a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .quick-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .quick-links li {
+            margin-bottom: 10px;
+        }
+
+        .quick-links li a {
+            color: white;
+            font-size: 16px;
+        }
+
+        .quick-links li a:hover {
+            color: #ffd700;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #1e90ff;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #007acc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">SmartEdu</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>About Smart Education</h1>
+    </header>
+
+    <section class="hero-section">
+        <h1>Welcome to Smart Education</h1>
+        <p>Your journey to mastering the digital world starts here. Learn the skills of the future today!</p>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>My Mission</h2>
+        <p>I am passionate about bridging the gap between technology and education. As a solo developer, I am committed to providing high-quality learning resources for everyone who wants to excel in web development, programming, and other tech fields.</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>Email: <a href="mailto:info@smartedu.com">info@smartedu.com</a></p>
+                    <p>Phone: <a href="tel:+91-1234567890">+91-1234567890</a></p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Education. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logoo.png" type="image/png" sizes="24 x24">
+
+    <title>Web Development - Smart Education</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .navbar {
+            background-color: #1e90ff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+   
+    .logo-text {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-text span {
+        margin-left: 10px;
+    }
+
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .nav-links li a:hover {
+            color: #ffd700;
+        }
+
+        header {
+            background-color: #1e90ff;
+            color: white;
+            height: 80px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        section,
+        aside {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .slider-section {
+            flex: 2;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .right-section {
+            flex: 1;
+            min-width: 200px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .slider {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slide.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px;
+            font-size: 18px;
+            background-color: rgba(30, 144, 255, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: #007acc;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1e90ff;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #007acc;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #007acc;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: #1e90ff;
+            color: white;
+            padding: 40px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            border-bottom: 1px solid #ffffff33;
+            padding-bottom: 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p,
+        .footer-column a,
+        .footer-column ul {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .footer-column a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .quick-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .quick-links li {
+            margin-bottom: 10px;
+        }
+
+        .quick-links li a {
+            color: white;
+            font-size: 16px;
+        }
+
+        .quick-links li a:hover {
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            color: #ffffffcc;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #0080ff;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-mode header,
+        .dark-mode footer {
+            background-color: #007acc;
+        }
+
+        .dark-mode section,
+        .dark-mode aside {
+            background-color: #444;
+        }
+
+        .dark-mode h2,
+        .dark-mode h3,
+        .dark-mode ul,
+        .dark-mode li {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
+    <nav class="navbar">
+        <a href="index.html" class="logo-text">SmartEdu</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>Web Development</h1>
+    </header>
+
+    <div class="main-content">
+
+        <section class="left-section">
+            <h2>What You Will Learn</h2>
+            <ul>
+                <li>HTML Basics</li>
+                <li>CSS Styling</li>
+                <li>JavaScript Programming</li>
+                <li>Python</li>
+                <li>Php</li>
+                <li>Sql</li>
+                <li>Node js</li>
+                <li>TypeScript</li>
+            </ul>
+            <a href="web subject.html" class="cta-btn">Start Learning</a>
+        </section>
+
+        <section class="slider-section">
+            <div class="slider">
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <img src="1.jpg" class="slide" alt="Image 1">
+                <img src="2.jpg" class="slide" alt="Image 2">
+                <img src="3.jpg" class="slide" alt="Image 3">
+                <img src="pyhton.jpg" class="slide" alt="Image 4">
+                <img src="php.jpg" class="slide" alt="Image 5">
+                <img src="sql.jpg" class="slide" alt="Image 6">
+                <img src="node.jpg" class="slide" alt="Image 7">
+                <button class="next" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </section>
+
+        <aside class="right-section">
+            <h3>Notes</h3>
+            <ul>
+                <li><a href="https://drive.google.com/file/d/1FZyHZMW0D4ncyBD5eToooNQrfCvvakzv/view?usp=sharing">HTML Basics</a></li>
+                <li><a href="https://drive.google.com/file/d/1cen5N0AKTMfN4J-JL4JUGSWlErbY1Y0N/view?usp=sharing">CSS Styling</a></li>
+                <li><a href="https://drive.google.com/file/d/1wCVDzsTG_KtYb7stg7f5NaF29mBihTW4/view?usp=sharing">JavaScript Programming</a></li>
+                <li><a href="https://drive.google.com/file/d/1PROvKE6gOh_DXG4opM7Nb-f9R4_Qsdmx/view?usp=sharing">Python</a></li>
+                <li><a href="https://drive.google.com/file/d/1ebCec4vhz6VevVsBWY_mu6EX89gfuEx9/view?usp=sharing">Php</a></li>
+                <li><a href="https://drive.google.com/file/d/1xMMmY8E7hJnyANuR6Wj5zzJwnSgIjZtg/view?usp=sharing">Sql</a></li>
+                <li><a href="https://drive.google.com/file/d/1jsuKMQPZ-NhrEx9DNuO4FW6-R69ZmMXS/view?usp=sharing">Node js</a></li>
+                <li><a href="https://drive.google.com/file/d/1EuU9z-GwjxCcePS0CC4bs8vAJZi2bCvw/view?usp=sharing">TypeScript</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>Email: <a href="mailto:info@smartedu.com">info@smartedu.com</a></p>
+                    <p>Phone: <a href="tel:+91-1234567890">+91-1234567890</a></p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Education. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+        setInterval(nextSlide, 3000);
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        
+        
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
