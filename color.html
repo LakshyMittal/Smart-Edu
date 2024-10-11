@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Matching Game</title>
+    <style>
+        .game-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .color-box {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+        }
+        .options {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Color Matching Game</h1>
+        <div class="color-box" id="colorBox"></div>
+        <div class="options" id="options"></div>
+        <p id="result"></p>
+        <button id="next">Next Color</button>
+    </div>
+
+    <script>
+        const colors = [
+            { name: 'Red', code: '#FF0000' },
+            { name: 'Green', code: '#00FF00' },
+            { name: 'Blue', code: '#0000FF' },
+            { name: 'Yellow', code: '#FFFF00' },
+            { name: 'Purple', code: '#800080' },
+        ];
+
+        let currentColor;
+        let correctAnswer;
+
+        function getRandomColor() {
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function loadColor() {
+            currentColor = getRandomColor();
+            correctAnswer = currentColor.name;
+            document.getElementById('colorBox').style.backgroundColor = currentColor.code;
+
+            const options = [...colors].sort(() => 0.5 - Math.random()).slice(0, 4);
+            if (!options.some(option => option.name === correctAnswer)) {
+                options[Math.floor(Math.random() * options.length)] = currentColor;
+            }
+
+            const optionsHtml = options.map(option => 
+                `<button onclick="checkAnswer('${option.name}')">${option.name}</button>`
+            ).join('');
+
+            document.getElementById('options').innerHTML = optionsHtml;
+            document.getElementById('result').textContent = '';
+        }
+
+        function checkAnswer(selected) {
+            if (selected === correctAnswer) {
+                document.getElementById('result').textContent = 'Correct!';
+            } else {
+                document.getElementById('result').textContent = 'Try Again!';
+            }
+        }
+
+        document.getElementById('next').addEventListener('click', loadColor);
+
+        loadColor(); // Initial load
+    </script>
+</body>
+</html>

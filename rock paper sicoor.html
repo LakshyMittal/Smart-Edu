@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rock, Paper, Scissors Game</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .game {
+      margin: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 1.2rem;
+      border: none;
+      background-color: blue;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .result {
+      font-size: 1.5rem;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rock, Paper, Scissors Game</h1>
+    <div class="game">
+      <button class="rock">Rock</button>
+      <button class="paper">Paper</button>
+      <button class="scissors">Scissors</button>
+    </div>
+    <div class="result">
+      <!-- The result will be dynamically generated using JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    // Function to generate a random choice (rock, paper, or scissors)
+    function generateChoice() {
+      let choices = ["rock", "paper", "scissors"];
+      return choices[Math.floor(Math.random() * choices.length)];
+    }
+
+    // Function to determine the winner
+    function determineWinner(userChoice, computerChoice) {
+      if (userChoice === computerChoice) {
+        return "It's a tie!";
+      }
+
+      if (userChoice === "rock") {
+        if (computerChoice === "scissors") {
+          return "Rock beats scissors! You win!";
+        } else {
+          return "Paper beats rock! Computer wins!";
+        }
+      }
+
+      if (userChoice === "paper") {
+        if (computerChoice === "rock") {
+          return "Paper beats rock! You win!";
+        } else {
+          return "Scissors beats paper! Computer wins!";
+        }
+      }
+
+      if (userChoice === "scissors") {
+        if (computerChoice === "paper") {
+          return "Scissors beats paper! You win!";
+        } else {
+          return "Rock beats scissors! Computer wins!";
+        }
+      }
+    }
+
+    // Add event listeners to the game buttons
+    document.querySelector(".rock").addEventListener("click", function() {
+      let userChoice = "rock";
+      let computerChoice = generateChoice();
+      let result = determineWinner(userChoice, computerChoice);
+      document.querySelector(".result").innerHTML = result;
+    });
+
+    document.querySelector(".paper").addEventListener("click", function() {
+      let userChoice = "paper";
+      let computerChoice = generateChoice();
+      let result = determineWinner(userChoice, computerChoice);
+      document.querySelector(".result").innerHTML = result;
+    });
+
+    document.querySelector(".scissors").addEventListener("click", function() {
+      let userChoice = "scissors";
+      let computerChoice = generateChoice();
+      let result = determineWinner(userChoice, computerChoice);
+      document.querySelector(".result").innerHTML = result;
+    });
+  </script>
+</body>
+</html>

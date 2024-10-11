@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman</title>
+  <style>
+    .game-container {
+      text-align: center;
+    }
+    .word {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .guess {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Hangman</h1>
+    <p class="word" id="word"></p>
+    <p class="guess" id="guesses">Lives: 6</p>
+    <input type="text" id="input" maxlength="1">
+    <button id="submit">Guess</button>
+    <br><br>
+    <button id="reset">Reset</button> <!-- Added Reset Button -->
+  </div>
+
+  <script>
+    const wordElement = document.getElementById('word');
+    const guessesElement = document.getElementById('guesses');
+    const inputElement = document.getElementById('input');
+    const submitButton = document.getElementById('submit');
+    const resetButton = document.getElementById('reset');  // Reference to Reset Button
+
+    const word = 'hangman';
+    let guesses = [];
+    let lives = 6;
+
+    function drawWord() {
+      let wordHtml = '';
+      for (let i = 0; i < word.length; i++) {
+        if (guesses.includes(word[i])) {
+          wordHtml += word[i] + ' ';
+        } else {
+          wordHtml += '_ ';
+        }
+      }
+      wordElement.innerHTML = wordHtml;
+    }
+
+    function checkGuess(guess) {
+      if (word.includes(guess)) {
+        guesses.push(guess);
+        drawWord();
+      } else {
+        lives--;
+        guessesElement.innerHTML = `Lives: ${lives}`;
+      }
+    }
+
+    function checkWin() {
+      if (word.split('').every(letter => guesses.includes(letter))) {
+        alert('You win!');
+      } else if (lives === 0) {
+        alert('Game over!');
+      }
+    }
+
+    function resetGame() {
+      guesses = [];
+      lives = 6;
+      inputElement.value = '';
+      guessesElement.innerHTML = `Lives: ${lives}`;
+      drawWord();
+    }
+
+    submitButton.addEventListener('click', () => {
+      const guess = inputElement.value.toLowerCase();
+      if (guess.length === 1 && guess.match(/[a-z]/i)) {
+        checkGuess(guess);
+        checkWin();
+        inputElement.value = '';
+      }
+    });
+
+    // Reset Button Event Listener
+    resetButton.addEventListener('click', resetGame);
+
+    drawWord();  // Initial word rendering
+  </script>
+</body>
+</html>

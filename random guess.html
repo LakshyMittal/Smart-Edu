@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Guess My Number Game</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .input-field {
+      padding: 10px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    .button {
+      padding: 10px;
+      font-size: 1.2rem;
+      border: none;
+      background-color: blue;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .result {
+      font-size: 1.5rem;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Guess My Number Game</h1>
+    <input type="number" class="input-field" id="guess" placeholder="Enter your guess">
+    <button class="button" id="submit">Submit</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    // Generate a random number between 1 and 100
+    let numberToGuess = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    // Add event listener to the submit button
+    document.getElementById("submit").addEventListener("click", function() {
+      let guess = parseInt(document.getElementById("guess").value);
+      attempts++;
+
+      if (guess < numberToGuess) {
+        document.getElementById("result").innerHTML = `Too low! Try again. (Attempt ${attempts})`;
+      } else if (guess > numberToGuess) {
+        document.getElementById("result").innerHTML = `Too high! Try again. (Attempt ${attempts})`;
+      } else {
+        document.getElementById("result").innerHTML = ` Congratulations! You guessed the number in ${attempts} attempts.`;
+        document.getElementById("submit").disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe: Player vs Computer</title>
+  <style>
+    .game-board {
+      width: 300px;
+      height: 300px;
+      border: 1px solid black;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tic-Tac-Toe</h1>
+  <div class="game-board">
+    <div class="cell" id="cell-0"></div>
+    <div class="cell" id="cell-1"></div>
+    <div class="cell" id="cell-2"></div>
+    <div class="cell" id="cell-3"></div>
+    <div class="cell" id="cell-4"></div>
+    <div class="cell" id="cell-5"></div>
+    <div class="cell" id="cell-6"></div>
+    <div class="cell" id="cell-7"></div>
+    <div class="cell" id="cell-8"></div>
+  </div>
+
+  <script>
+    let gameBoard = [
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', '']
+    ];
+
+    let currentPlayer = 'X';  // You are always 'X'
+    let gameOver = false;
+
+    // Function to handle player's move
+    function handleClick(cellId) {
+      if (gameOver) return;  // Stop game if it's over
+
+      const row = Math.floor(cellId / 3);
+      const col = cellId % 3;
+
+      if (gameBoard[row][col] === '') {
+        gameBoard[row][col] = currentPlayer;
+        document.getElementById(`cell-${cellId}`).innerHTML = currentPlayer;
+
+        if (checkWin(currentPlayer)) {
+          alert('You win!');
+          gameOver = true;
+          return;
+        }
+
+        // Check for a draw
+        if (isDraw()) {
+          alert("It's a draw!");
+          gameOver = true;
+          return;
+        }
+
+        currentPlayer = 'O';  // Computer's turn
+        setTimeout(computerMove, 500);  // Delay computer's move
+      }
+    }
+
+    // Function to handle computer's move
+    function computerMove() {
+      if (gameOver) return;
+
+      // Find empty cells
+      const emptyCells = [];
+      for (let i = 0; i < 9; i++) {
+        const row = Math.floor(i / 3);
+        const col = i % 3;
+        if (gameBoard[row][col] === '') {
+          emptyCells.push(i);
+        }
+      }
+
+      if (emptyCells.length > 0) {
+        // Choose a random empty cell
+        const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        const row = Math.floor(randomCell / 3);
+        const col = randomCell % 3;
+
+        gameBoard[row][col] = 'O';
+        document.getElementById(`cell-${randomCell}`).innerHTML = 'O';
+
+        if (checkWin('O')) {
+          alert('You lose!');
+          gameOver = true;
+          return;
+        }
+
+        // Check for a draw after computer's move
+        if (isDraw()) {
+          alert("It's a draw!");
+          gameOver = true;
+          return;
+        }
+
+        currentPlayer = 'X';  // Your turn again
+      }
+    }
+
+    // Function to check if there's a winner
+    function checkWin(player) {
+      for (let i = 0; i < 3; i++) {
+        // Check rows and columns
+        if (gameBoard[i][0] === player && gameBoard[i][1] === player && gameBoard[i][2] === player) {
+          return true;
+        }
+        if (gameBoard[0][i] === player && gameBoard[1][i] === player && gameBoard[2][i] === player) {
+          return true;
+        }
+      }
+      // Check diagonals
+      if (gameBoard[0][0] === player && gameBoard[1][1] === player && gameBoard[2][2] === player) {
+        return true;
+      }
+      if (gameBoard[0][2] === player && gameBoard[1][1] === player && gameBoard[2][0] === player) {
+        return true;
+      }
+      return false;
+    }
+
+    // Function to check if the game is a draw
+    function isDraw() {
+      return gameBoard.flat().every(cell => cell !== '');
+    }
+
+    // Add event listeners for each cell
+    for (let i = 0; i < 9; i++) {
+      document.getElementById(`cell-${i}`).addEventListener('click', () => handleClick(i));
+    }
+  </script>
+</body>
+</html>
